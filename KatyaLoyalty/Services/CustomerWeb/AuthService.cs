@@ -3,6 +3,7 @@ using KatyaLoyalty.Db.MsSql;
 using KatyaLoyalty.Payloads.CustomerWeb.Auth;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace KatyaLoyalty.Services.CustomerWeb
@@ -18,10 +19,22 @@ namespace KatyaLoyalty.Services.CustomerWeb
                 {
                     KatyaLoyaltyMsSqlContext context = new KatyaLoyaltyMsSqlContext();
                     Authenticator.EncryptWithPbkdf2(registrationRequest.Password, out string passwordSalt, out string passwordHash);
+                    if (context.Customers.Any(x => x.Email.ToLower() == registrationRequest.Email.ToLower()))
+                    {
+                        registrationResponse.Errors.Add("email_exists");
+                        registrationResponse.Success = false;
+                        return registrationResponse;
+                    }
+                    else if (context.Customers.Any(x=>x.PhoneCountryCode == registrationRequest.PhoneCountryCode && x.PhoneNumber == registrationRequest.PhoneNumber))
+                    {
+                        registrationResponse.Errors.Add("phone_number_exists");
+                        registrationResponse.Success = false;
+                        return registrationResponse;
+                    }
                     Customer customer = new Customer()
                     {
                         Email = registrationRequest.Email,
-                        PhoneCode = registrationRequest.PhoneCode,
+                        PhoneCountryCode = registrationRequest.PhoneCountryCode,
                         PhoneNumber = registrationRequest.PhoneNumber,
                         CreatedDate = DateTime.Now,
                         PasswordSalt = passwordSalt,
@@ -44,6 +57,12 @@ namespace KatyaLoyalty.Services.CustomerWeb
                 }
             }
             return registrationResponse;
+        }
+
+        public LoginResponse AuthenticateCustomer(LoginRequest loginRequest)
+        {
+            LoginResponse loginResponse = new LoginResponse();
+            return loginResponse;
         }
     }
 }

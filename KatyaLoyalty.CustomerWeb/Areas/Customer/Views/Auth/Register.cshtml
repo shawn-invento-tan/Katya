@@ -1,8 +1,36 @@
-﻿@page
-@model KatyaLoyalty.CustomerWeb.Areas.Customer.Views.Auth.RegisterModel
+﻿@model KatyaLoyalty.CustomerWeb.Areas.Customer.Views.Auth.RegisterModel
 @{
     Layout = "~/Views/Shared/_BaseLayout.cshtml";
 }
+<script>
+    $(document).ready(function () {
+        populatePhoneCodeSelectorModal("#countryCodeModal", "#phoneCountryCode");
+    })
+    function populatePhoneCodeSelectorModal(modalSelector, outputSelector) {
+        var modal = $(modalSelector);
+        var modalMenu = $(modal).find(".modal-body");
+        var output = $(outputSelector);
+        $.get("/assets/json/country-codes-with-flags.json", function (data) {
+            for (i = 0; i < data.length; i++) {
+                var country = data[i];
+                var phoneCodeSelectorLink = document.createElement("a");
+                var countryNameSpan = document.createElement("span");
+                var phoneCodeSpan = document.createElement("span");
+                phoneCodeSelectorLink.className = "modal-menu-item";
+                phoneCodeSelectorLink.setAttribute("data-countrycode", country.countryCode);
+                countryNameSpan.innerHTML = country.name;
+                phoneCodeSpan.innerHTML = country.countryCode;
+                phoneCodeSelectorLink.appendChild(countryNameSpan);
+                phoneCodeSelectorLink.appendChild(phoneCodeSpan);
+                $(modalMenu).append(phoneCodeSelectorLink);
+            }
+            $(modal).find(".modal-menu-item").on("click", function () {
+                $(output).val($(this).attr("data-countrycode"))
+                $(modal).modal("toggle");
+            })
+        })
+    }
+</script>
 <div class="py-5">
     <div class="display-wrapper display-wrapper-400 ">
         <div class="card-vertical border-x-0 border-y-0 border-x-sm-1 border-y-sm-1 mb-3">
@@ -13,23 +41,24 @@
                     </div>
                     <form method="post" action="/customer/auth/ajax?action=register">
                         <div class="form-group">
-                            <input class="form-control" placeholder="Full Name" />
+                            <input id="fullName" name="fullName" type="text" class="form-control" placeholder="Full Name" />
                         </div>
                         <div class="form-group">
-                            <input class="form-control" placeholder="Email" />
+                            <input id="email" name="email" type="text" class="form-control" placeholder="Email" />
                         </div>
                         <div class="form-group">
+                            <input id="phoneCountryCode" type="hidden" />
                             <div class="input-group phone-input-group">
-                                <div class="input-group-prepend phone-code-selector">
-                                    <button type="button" class="btn dropdown-toggle phone-code-selector-button" data-toggle="modal" data-target="#phoneCodeSelectorModal">
-                                        <span class="phone-code-text">+60</span>
+                                <div class="input-group-prepend w-30">
+                                    <button type="button" class="btn dropdown-toggle country-code-modal-toggle" data-toggle="modal" data-target="#countryCodeModal">
+                                        <span class="country-code-text">+60</span>
                                     </button>
                                 </div>
-                                <input type="text" class="form-control w-70" placeholder="Phone Number" />
+                                <input id="phoneNumber" name="phoneNumber" type="text" class="form-control w-70" placeholder="Phone Number" />
                             </div>
                         </div>
                         <div class="form-group">
-                            <input class="form-control" placeholder="Password" />
+                            <input type="password" class="form-control" placeholder="Password" />
                         </div>
                         <div class="form-group">
                             <button class="btn btn-block btn-outline-dark rounded-pill text-bold">REGISTER</button>
@@ -55,7 +84,7 @@
         </div>
     </div>
 </div>
-<div class="modal fade" id="phoneCodeSelectorModal" tabindex="-1" aria-labelledby="phoneCodeSelectorModalLabel" aria-hidden="true">
+<div class="modal fade phone-code-selector-modal" id="countryCodeModal" tabindex="-1" aria-labelledby="countryCodeModal" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
         <div class="modal-content">
             <div class="modal-header border-b-0 align-items-center pad-x-5">
@@ -67,62 +96,7 @@
             <div class="pad-x-4 pad-b-5 border-b-1">
                 <input class="form-control rounded-pill" placeholder="Country Name" />
             </div>
-            <div class="modal-body pad-0">
-                <div class="pad-y-3 pad-x-5 d-flex justify-content-between align-items-center border-b-1">
-                    <span>Malaysia</span> <span>+60</span>
-                </div>
-                <div class="pad-y-3 pad-x-5 d-flex justify-content-between align-items-center border-b-1">
-                    <span>Malaysia</span> <span>+60</span>
-                </div>
-                <div class="pad-y-3 pad-x-5 d-flex justify-content-between align-items-center border-b-1">
-                    <span>Malaysia</span> <span>+60</span>
-                </div>
-                <div class="pad-y-3 pad-x-5 d-flex justify-content-between align-items-center border-b-1">
-                    <span>Malaysia</span> <span>+60</span>
-                </div>
-                <div class="pad-y-3 pad-x-5 d-flex justify-content-between align-items-center border-b-1">
-                    <span>Malaysia</span> <span>+60</span>
-                </div>
-                <div class="pad-y-3 pad-x-5 d-flex justify-content-between align-items-center border-b-1">
-                    <span>Malaysia</span> <span>+60</span>
-                </div>
-                <div class="pad-y-3 pad-x-5 d-flex justify-content-between align-items-center border-b-1">
-                    <span>Malaysia</span> <span>+60</span>
-                </div>
-                <div class="pad-y-3 pad-x-5 d-flex justify-content-between align-items-center border-b-1">
-                    <span>Malaysia</span> <span>+60</span>
-                </div>
-                <div class="pad-y-3 pad-x-5 d-flex justify-content-between align-items-center border-b-1">
-                    <span>Malaysia</span> <span>+60</span>
-                </div>
-                <div class="pad-y-3 pad-x-5 d-flex justify-content-between align-items-center border-b-1">
-                    <span>Malaysia</span> <span>+60</span>
-                </div>
-                <div class="pad-y-3 pad-x-5 d-flex justify-content-between align-items-center border-b-1">
-                    <span>Malaysia</span> <span>+60</span>
-                </div>
-                <div class="pad-y-3 pad-x-5 d-flex justify-content-between align-items-center border-b-1">
-                    <span>Malaysia</span> <span>+60</span>
-                </div>
-                <div class="pad-y-3 pad-x-5 d-flex justify-content-between align-items-center border-b-1">
-                    <span>Malaysia</span> <span>+60</span>
-                </div>
-                <div class="pad-y-3 pad-x-5 d-flex justify-content-between align-items-center border-b-1">
-                    <span>Malaysia</span> <span>+60</span>
-                </div>
-                <div class="pad-y-3 pad-x-5 d-flex justify-content-between align-items-center border-b-1">
-                    <span>Malaysia</span> <span>+60</span>
-                </div>
-                <div class="pad-y-3 pad-x-5 d-flex justify-content-between align-items-center border-b-1">
-                    <span>Malaysia</span> <span>+60</span>
-                </div>
-                <div class="pad-y-3 pad-x-5 d-flex justify-content-between align-items-center border-b-1">
-                    <span>Malaysia</span> <span>+60</span>
-                </div>
-                <div class="pad-y-3 pad-x-5 d-flex justify-content-between align-items-center border-b-1">
-                    <span>Malaysia</span> <span>+60</span>
-                </div>
-            </div>
+            <div class="modal-body pad-0"></div>
         </div>
     </div>
 </div>

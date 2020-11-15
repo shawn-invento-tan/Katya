@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace KatyaLoyalty.CustomerWeb.Models
 {
-    public class BaseModel
+    public class BaseViewModel
     {
     }
 }

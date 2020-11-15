@@ -301,6 +301,9 @@
 .text-whitespace-nowrap {
     white-space: nowrap !important;
 }
+.overflow-hidden {
+    overflow:hidden;
+}
 
 /* padding modifiers */
 .pad-0 {

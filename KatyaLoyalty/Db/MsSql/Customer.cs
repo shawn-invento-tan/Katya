@@ -18,10 +18,10 @@ namespace KatyaLoyalty.Db.MsSql
         [Required]
         public string Email { get; set; }
 
-        [Column("phone_code")]
+        [Column("phone_country_code")]
         [MaxLength(10)]
         [Required]
-        public string PhoneCode { get; set; }
+        public string PhoneCountryCode { get; set; }
 
         [Column("phone_number")]
         [MaxLength(50)]

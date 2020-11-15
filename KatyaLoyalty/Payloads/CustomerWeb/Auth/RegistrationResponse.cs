@@ -4,7 +4,7 @@ using System.Text;
 
 namespace KatyaLoyalty.Payloads.CustomerWeb.Auth
 {
-    public class RegistrationResponse
+    public class RegistrationResponse : AjaxResponse
     {
         public bool Success { get; set; }
         public List<string> Errors { get; set; }

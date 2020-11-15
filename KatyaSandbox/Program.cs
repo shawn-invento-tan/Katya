@@ -1,7 +1,9 @@
-﻿using KatyaLoyalty.Db.MsSql;
+﻿using Katya.Extensions;
+using KatyaLoyalty.Db.MsSql;
 using KatyaLoyalty.Payloads.CustomerWeb.Auth;
 using KatyaLoyalty.Services.CustomerWeb;
 using Newtonsoft.Json;
+using PhoneNumbers;
 using System;
 
 namespace KatyaSandbox
@@ -10,21 +12,27 @@ namespace KatyaSandbox
     {
         static void Main(string[] args)
         {
-            AuthService authService = new AuthService();
-            DateTime now = DateTime.Now;
-            string fullName = $"Customer {now.Ticks}";
-            string email = $"{now.Ticks}";
+            PhoneNumberUtil phoneNumberUtil = PhoneNumberUtil.GetInstance();
+            PhoneNumber phoneNumber = phoneNumberUtil.Parse("+1-2681234567", null);
+            Console.WriteLine(phoneNumber.CountryCode);
+            Console.WriteLine(phoneNumberUtil.GetRegionCodeForNumber(phoneNumber));
 
-            RegistrationRequest registrationRequest = new RegistrationRequest()
+            foreach(string supportedRegion in phoneNumberUtil.GetSupportedRegions())
             {
-                FirstName = fullName,
-                Email = email,
-                PhoneCode = "60",
-                PhoneNumber = "123a",
-                Password = "test123"
-            };
+                int countryCode = phoneNumberUtil.GetCountryCodeForRegion(supportedRegion);
+                
+                
+                try
+                {
+                    Locale locale = new Locale("EN", supportedRegion);
+                    Console.WriteLine($"{locale.GetDisplayCountry("en")}  {countryCode}");
 
-            authService.RegisterCustomer(registrationRequest);
+                }
+                catch(Exception ex)
+                {
+                    Console.WriteLine(ex);
+                }
+            }
         }
     }
 }

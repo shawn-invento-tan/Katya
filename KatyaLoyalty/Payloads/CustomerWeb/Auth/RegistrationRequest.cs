@@ -1,9 +1,8 @@
-﻿using Microsoft.AspNetCore.Http;
-using System;
+﻿using Katya.Extensions;
+using Microsoft.AspNetCore.Http;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
-using System.Text;
 
 namespace KatyaLoyalty.Payloads.CustomerWeb.Auth
 {
@@ -24,10 +23,9 @@ namespace KatyaLoyalty.Payloads.CustomerWeb.Auth
         public string Email { get; set; }
 
         [Required(ErrorMessage = "phone_code_required")]
-        public string PhoneCode { get; set; }
+        public string PhoneCountryCode { get; set; }
 
         [Required(ErrorMessage = "phone_number_required")]
-        [Phone(ErrorMessage = "phone_number_invalid")]
         public string PhoneNumber { get; set; }
         
         [Required(ErrorMessage = "password_required")]
@@ -40,7 +38,7 @@ namespace KatyaLoyalty.Payloads.CustomerWeb.Auth
             MiddleName = request.Form["middleName"];
             LastName = request.Form["lastName"];
             Email = request.Form["email"];
-            PhoneCode = request.Form["phoneCode"];
+            PhoneCountryCode = request.Form["phoneCountryCode"];
             PhoneNumber = request.Form["phoneNumber"];
             Password = request.Form["password"];
         }
@@ -50,11 +48,23 @@ namespace KatyaLoyalty.Payloads.CustomerWeb.Auth
             RegistrationResponse response = new RegistrationResponse();
             ValidationContext validationContext = new ValidationContext(this);
             List<ValidationResult> validationResults = new List<ValidationResult>();
-            bool isValid = Validator.TryValidateObject(this, validationContext, validationResults, true);
-            if (!isValid)
+            Validator.TryValidateObject(this, validationContext, validationResults, true);
+            response.Errors = validationResults.Select(x => x.ErrorMessage).ToList();
+            string rawPhoneNumber = $"{PhoneCountryCode}{PhoneNumber}";
+            
+            if (rawPhoneNumber.IsValidMobileNumber(out string phoneCountryCode, out string phoneNumber))
+            {
+                PhoneCountryCode = phoneCountryCode;
+                PhoneNumber = phoneNumber;
+            }
+            else
+            {
+                response.Errors.Add("phone_number_invalid");
+            }
+
+            if (response.Errors.Count > 0)
             {
                 response.Success = false;
-                response.Errors = validationResults.Select(x => x.ErrorMessage).ToList();
             }
             return response;
         }

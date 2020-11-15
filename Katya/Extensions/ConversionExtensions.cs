@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -19,6 +20,11 @@ namespace Katya.Extensions
         public static long ToInt64(this object obj)
         {
             return Convert.ToInt64(obj);
+        }
+
+        public static string ToJson(this object obj)
+        {
+            return JsonConvert.SerializeObject(obj);
         }
     }
 }
