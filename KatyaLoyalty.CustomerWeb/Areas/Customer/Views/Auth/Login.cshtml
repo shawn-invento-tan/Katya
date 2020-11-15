@@ -1,0 +1,41 @@
+﻿@page
+@model KatyaLoyalty.CustomerWeb.Areas.Customer.Views.Auth.LoginModel
+@{
+    Layout = "~/Views/Shared/_BaseLayout.cshtml";
+}
+<div class="py-5">
+    <div class="display-wrapper display-wrapper-400 ">
+        <div class="card-vertical border-x-0 border-y-0 border-x-sm-1 border-y-sm-1 mb-3">
+            <div class="body">
+                <div class="pad-3">
+                    <div class="mb-4">
+                        <h1 class="text-center mb-0">Take Control</h1>
+                    </div>
+                    <form>
+                        <div class="form-group">
+                            <input class="form-control" placeholder="Email" />
+                        </div>
+                        <div class="form-group">
+                            <input class="form-control" placeholder="Password" />
+                        </div>
+                        <div class="form-group">
+                            <button class="btn btn-block btn-outline-dark rounded-pill text-bold">LOG IN</button>
+                        </div>
+                        <div class="text-center">
+                            <a href="/customer/auth/recoverpassword" class="text-bold text-decoration-none text-14px text-secondary">I forgot my password</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="card-vertical border-x-0 border-y-0 border-x-sm-1 border-y-sm-1 mb-3">
+            <div class="body">
+                <div class="pad-x-3">
+                    <div class="text-center text-secondary">
+                        I don't have an account. <a href="/customer/auth/register" class="text-bold text-decoration-none">Register</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

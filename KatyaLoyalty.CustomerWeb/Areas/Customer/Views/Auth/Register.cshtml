@@ -1,0 +1,128 @@
+﻿@page
+@model KatyaLoyalty.CustomerWeb.Areas.Customer.Views.Auth.RegisterModel
+@{
+    Layout = "~/Views/Shared/_BaseLayout.cshtml";
+}
+<div class="py-5">
+    <div class="display-wrapper display-wrapper-400 ">
+        <div class="card-vertical border-x-0 border-y-0 border-x-sm-1 border-y-sm-1 mb-3">
+            <div class="body">
+                <div class="pad-3">
+                    <div class="mb-4">
+                        <h1 class="text-center mb-0">Take Control</h1>
+                    </div>
+                    <form method="post" action="/customer/auth/ajax?action=register">
+                        <div class="form-group">
+                            <input class="form-control" placeholder="Full Name" />
+                        </div>
+                        <div class="form-group">
+                            <input class="form-control" placeholder="Email" />
+                        </div>
+                        <div class="form-group">
+                            <div class="input-group phone-input-group">
+                                <div class="input-group-prepend phone-code-selector">
+                                    <button type="button" class="btn dropdown-toggle phone-code-selector-button" data-toggle="modal" data-target="#phoneCodeSelectorModal">
+                                        <span class="phone-code-text">+60</span>
+                                    </button>
+                                </div>
+                                <input type="text" class="form-control w-70" placeholder="Phone Number" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <input class="form-control" placeholder="Password" />
+                        </div>
+                        <div class="form-group">
+                            <button class="btn btn-block btn-outline-dark rounded-pill text-bold">REGISTER</button>
+                        </div>
+                        <div class="text-center text-14px">
+                            By registering, you agree to our
+                            <a href="/about/tnc" class="text-decoration-none text-bold text-secondary">Terms and Conditions</a>,
+                            <a href="/about/privacy" class="text-decoration-none text-bold text-secondary">Privacy Policy</a> and
+                            <a href="/about/cookies" class="text-decoration-none text-bold text-secondary">Cookie Policy</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="card-vertical border-x-0 border-y-0 border-x-sm-1 border-y-sm-1 mb-3">
+            <div class="body">
+                <div class="pad-x-3">
+                    <div class="text-center text-secondary">
+                        I have an account. <a href="/customer/auth/login" class="text-decoration-none text-bold">Log in</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="phoneCodeSelectorModal" tabindex="-1" aria-labelledby="phoneCodeSelectorModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header border-b-0 align-items-center pad-x-5">
+                <h5 class="text-bold mb-0">Select Country</h5>
+                <a href="#" class="text-secondary text-decoration-none text-22px" data-dismiss="modal">
+                    <i class="fa fa-times"></i>
+                </a>
+            </div>
+            <div class="pad-x-4 pad-b-5 border-b-1">
+                <input class="form-control rounded-pill" placeholder="Country Name" />
+            </div>
+            <div class="modal-body pad-0">
+                <div class="pad-y-3 pad-x-5 d-flex justify-content-between align-items-center border-b-1">
+                    <span>Malaysia</span> <span>+60</span>
+                </div>
+                <div class="pad-y-3 pad-x-5 d-flex justify-content-between align-items-center border-b-1">
+                    <span>Malaysia</span> <span>+60</span>
+                </div>
+                <div class="pad-y-3 pad-x-5 d-flex justify-content-between align-items-center border-b-1">
+                    <span>Malaysia</span> <span>+60</span>
+                </div>
+                <div class="pad-y-3 pad-x-5 d-flex justify-content-between align-items-center border-b-1">
+                    <span>Malaysia</span> <span>+60</span>
+                </div>
+                <div class="pad-y-3 pad-x-5 d-flex justify-content-between align-items-center border-b-1">
+                    <span>Malaysia</span> <span>+60</span>
+                </div>
+                <div class="pad-y-3 pad-x-5 d-flex justify-content-between align-items-center border-b-1">
+                    <span>Malaysia</span> <span>+60</span>
+                </div>
+                <div class="pad-y-3 pad-x-5 d-flex justify-content-between align-items-center border-b-1">
+                    <span>Malaysia</span> <span>+60</span>
+                </div>
+                <div class="pad-y-3 pad-x-5 d-flex justify-content-between align-items-center border-b-1">
+                    <span>Malaysia</span> <span>+60</span>
+                </div>
+                <div class="pad-y-3 pad-x-5 d-flex justify-content-between align-items-center border-b-1">
+                    <span>Malaysia</span> <span>+60</span>
+                </div>
+                <div class="pad-y-3 pad-x-5 d-flex justify-content-between align-items-center border-b-1">
+                    <span>Malaysia</span> <span>+60</span>
+                </div>
+                <div class="pad-y-3 pad-x-5 d-flex justify-content-between align-items-center border-b-1">
+                    <span>Malaysia</span> <span>+60</span>
+                </div>
+                <div class="pad-y-3 pad-x-5 d-flex justify-content-between align-items-center border-b-1">
+                    <span>Malaysia</span> <span>+60</span>
+                </div>
+                <div class="pad-y-3 pad-x-5 d-flex justify-content-between align-items-center border-b-1">
+                    <span>Malaysia</span> <span>+60</span>
+                </div>
+                <div class="pad-y-3 pad-x-5 d-flex justify-content-between align-items-center border-b-1">
+                    <span>Malaysia</span> <span>+60</span>
+                </div>
+                <div class="pad-y-3 pad-x-5 d-flex justify-content-between align-items-center border-b-1">
+                    <span>Malaysia</span> <span>+60</span>
+                </div>
+                <div class="pad-y-3 pad-x-5 d-flex justify-content-between align-items-center border-b-1">
+                    <span>Malaysia</span> <span>+60</span>
+                </div>
+                <div class="pad-y-3 pad-x-5 d-flex justify-content-between align-items-center border-b-1">
+                    <span>Malaysia</span> <span>+60</span>
+                </div>
+                <div class="pad-y-3 pad-x-5 d-flex justify-content-between align-items-center border-b-1">
+                    <span>Malaysia</span> <span>+60</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

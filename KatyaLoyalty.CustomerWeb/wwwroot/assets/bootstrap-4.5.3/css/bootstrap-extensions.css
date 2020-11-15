@@ -1,0 +1,393 @@
+﻿/*border utilities*/
+.border-x-0 {
+    border-left: 0px;
+    border-right: 0px;
+}
+.border-x-1 {
+    border-left: 1px solid #dee2e6;
+    border-right: 1px solid #dee2e6;
+}
+
+.border-y-0 {
+    border-top: 0px;
+    border-bottom: 0px;
+}
+.border-y-1 {
+    border-top: 1px solid #dee2e6;
+    border-bottom: 1px solid #dee2e6;
+}
+
+.border-t-0 {
+    border-top: 0px;
+}
+.border-t-1 {
+    border-top: 1px solid #dee2e6;
+}
+
+.border-r-0 {
+    border-right: 0px;
+}
+.border-r-1 {
+    border-right: 1px solid #dee2e6;
+}
+
+.border-b-0 {
+    border-bottom: 0px;
+}
+.border-b-1 {
+    border-bottom: 1px solid #dee2e6;
+}
+
+.border-l-0 {
+    border-left: 0px;
+}
+.border-l-1 {
+    border-left: 1px solid #dee2e6;
+}
+
+@media (min-width: 576px) {
+    .border-x-sm-0 {
+        border-left: 0px;
+        border-right: 0px;
+    }
+
+    .border-x-sm-1 {
+        border-left: 1px solid #dee2e6;
+        border-right: 1px solid #dee2e6;
+    }
+
+    .border-y-sm-0 {
+        border-top: 0px;
+        border-bottom: 0px;
+    }
+
+    .border-y-sm-1 {
+        border-top: 1px solid #dee2e6;
+        border-bottom: 1px solid #dee2e6;
+    }
+
+    .border-t-sm-0 {
+        border-top: 0px;
+    }
+
+    .border-t-sm-1 {
+        border-top: 1px solid #dee2e6;
+    }
+
+    .border-r-sm-0 {
+        border-right: 0px;
+    }
+
+    .border-r-sm-1 {
+        border-right: 1px solid #dee2e6;
+    }
+
+    .border-b-sm-0 {
+        border-bottom: 0px;
+    }
+
+    .border-b-sm-1 {
+        border-bottom: 1px solid #dee2e6;
+    }
+
+    .border-l-sm-0 {
+        border-left: 0px;
+    }
+
+    .border-l-sm-1 {
+        border-left: 1px solid #dee2e6;
+    }
+}
+
+
+@media (min-width: 768px) {
+    .border-x-md-0 {
+        border-left: 0px;
+        border-right: 0px;
+    }
+
+    .border-x-md-1 {
+        border-left: 1px solid #dee2e6;
+        border-right: 1px solid #dee2e6;
+    }
+
+    .border-y-md-0 {
+        border-top: 0px;
+        border-bottom: 0px;
+    }
+
+    .border-y-md-1 {
+        border-top: 1px solid #dee2e6;
+        border-bottom: 1px solid #dee2e6;
+    }
+
+    .border-t-md-0 {
+        border-top: 0px;
+    }
+
+    .border-t-md-1 {
+        border-top: 1px solid #dee2e6;
+    }
+
+    .border-r-md-0 {
+        border-right: 0px;
+    }
+
+    .border-r-md-1 {
+        border-right: 1px solid #dee2e6;
+    }
+
+    .border-b-md-0 {
+        border-bottom: 0px;
+    }
+
+    .border-b-md-1 {
+        border-bottom: 1px solid #dee2e6;
+    }
+
+    .border-l-md-0 {
+        border-left: 0px;
+    }
+
+    .border-l-md-1 {
+        border-left: 1px solid #dee2e6;
+    }
+}
+
+
+@media (min-width: 992px) {
+    .border-x-lg-0 {
+        border-left: 0px;
+        border-right: 0px;
+    }
+
+    .border-x-lg-1 {
+        border-left: 1px solid #dee2e6;
+        border-right: 1px solid #dee2e6;
+    }
+
+    .border-y-lg-0 {
+        border-top: 0px;
+        border-bottom: 0px;
+    }
+
+    .border-y-lg-1 {
+        border-top: 1px solid #dee2e6;
+        border-bottom: 1px solid #dee2e6;
+    }
+
+    .border-t-lg-0 {
+        border-top: 0px;
+    }
+
+    .border-t-lg-1 {
+        border-top: 1px solid #dee2e6;
+    }
+
+    .border-r-lg-0 {
+        border-right: 0px;
+    }
+
+    .border-r-lg-1 {
+        border-right: 1px solid #dee2e6;
+    }
+
+    .border-b-lg-0 {
+        border-bottom: 0px;
+    }
+
+    .border-b-lg-1 {
+        border-bottom: 1px solid #dee2e6;
+    }
+
+    .border-l-lg-0 {
+        border-left: 0px;
+    }
+
+    .border-l-lg-1 {
+        border-left: 1px solid #dee2e6;
+    }
+}
+
+
+@media (min-width: 1200px) {
+    .border-x-xl-0 {
+        border-left: 0px;
+        border-right: 0px;
+    }
+
+    .border-x-xl-1 {
+        border-left: 1px solid #dee2e6;
+        border-right: 1px solid #dee2e6;
+    }
+
+    .border-y-xl-0 {
+        border-top: 0px;
+        border-bottom: 0px;
+    }
+
+    .border-y-xl-1 {
+        border-top: 1px solid #dee2e6;
+        border-bottom: 1px solid #dee2e6;
+    }
+
+    .border-t-xl-0 {
+        border-top: 0px;
+    }
+
+    .border-t-xl-1 {
+        border-top: 1px solid #dee2e6;
+    }
+
+    .border-r-xl-0 {
+        border-right: 0px;
+    }
+
+    .border-r-xl-1 {
+        border-right: 1px solid #dee2e6;
+    }
+
+    .border-b-xl-0 {
+        border-bottom: 0px;
+    }
+
+    .border-b-xl-1 {
+        border-bottom: 1px solid #dee2e6;
+    }
+
+    .border-l-xl-0 {
+        border-left: 0px;
+    }
+
+    .border-l-xl-1 {
+        border-left: 1px solid #dee2e6;
+    }
+}
+
+/* text modifiers */
+.text-decoration-none:hover {
+    text-decoration:none;
+}
+.text-14px {
+    font-size: 14px !important;
+}
+.text-15px {
+    font-size: 15px !important;
+}
+.text-16px {
+    font-size: 16px !important;
+}
+.text-17px {
+    font-size: 17px !important;
+}
+.text-18px {
+    font-size: 18px !important;
+}
+.text-19px {
+    font-size: 19px !important;
+}
+.text-20px {
+    font-size: 20px !important;
+}
+.text-21px {
+    font-size: 21px !important;
+}
+.text-22px {
+    font-size: 22px !important;
+}
+.text-bold {
+    font-weight: bold !important;
+}
+.text-whitespace-nowrap {
+    white-space: nowrap !important;
+}
+
+/* padding modifiers */
+.pad-0 {
+    padding:0px;
+}
+.pad-x-0 {
+    padding-left:0px;
+    padding-right:0px;
+}
+.pad-1 {
+    padding:0.25rem;
+}
+.pad-2 {
+    padding:0.5rem;
+}
+.pad-3 {
+    padding:0.75rem;
+}
+.pad-x-3 {
+    padding-left:0.75rem;
+    padding-right:0.75rem;
+}
+.pad-y-3 {
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+}
+.pad-4 {
+    padding: 1rem;
+}
+.pad-x-4 {
+    padding-left:1rem;
+    padding-right:1rem;
+}
+.pad-5 {
+    padding:1.25rem;
+}
+.pad-x-5 {
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+}
+.pad-t-5 {
+    padding-top: 1.25rem;
+}
+.pad-r-5 {
+    padding-right: 1.25rem;
+}
+.pad-b-5 {
+    padding-bottom: 1.25rem;
+}
+.pad-l-5 {
+    padding-left: 1.25rem;
+}
+
+@media (min-width: 576px) {
+    
+}
+
+
+@media (min-width: 768px) {
+
+}
+
+
+@media (min-width: 992px) {
+
+}
+
+@media (min-width: 1200px) {
+
+}
+
+/* width utilities */
+.w-30 {
+    width:30% !important;
+}
+.w-35 {
+    width:35% !important;
+}
+.w-40 {
+    width:40% !important;
+}
+.w-60 {
+    width:60% !important;
+}
+.w-65 {
+    width:65% !important;
+}
+.w-70 {
+    width:70% !important;
+}

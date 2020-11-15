@@ -1,0 +1,69 @@
+﻿body {
+    font-family: "Raleway";
+    font-feature-settings:"lnum";
+}
+.header {
+    position:fixed;
+    top:0;
+    left:0;
+    right:0;
+}
+.content {
+
+}
+.footer {
+
+}
+
+/* display-wrapper */
+.display-wrapper {
+    width:100%;
+    margin:auto;
+    max-width:1300px;
+}
+.display-wrapper-400 {
+    max-width:400px;
+}
+.display-wrapper-500 {
+    max-width:500px;
+}
+.display-wrapper-800 {
+    max-width:800px;
+}
+.display-wrapper-1000 {
+    max-width:1000px;
+}
+
+
+/* cards */
+.card-horizontal {
+    display:flex;
+}
+.card-horizontal .body {
+    flex-grow:1;
+}
+.card-vertical {
+    display:block;
+}
+.card-vertical .body {
+    padding:1.25rem;
+}
+
+/* special buttons */
+.phone-code-selector {
+    width:30% !important;
+}
+.phone-code-selector-button {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100% !important;
+    border: 1px solid #ced4da;
+}
+.phone-code-text {
+    max-width:100%;
+    overflow:hidden;
+}
+.phone-input-group .phone-number-input {
+    width:70% !important;
+}
