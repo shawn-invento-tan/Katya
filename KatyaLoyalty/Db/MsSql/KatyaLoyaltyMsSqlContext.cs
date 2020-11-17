@@ -9,6 +9,7 @@ namespace KatyaLoyalty.Db.MsSql
     {
         public DbSet<Customer> Customers { get; set; }
         public DbSet<CustomerProfile> CustomerProfiles { get; set; }
+        public DbSet<CustomerToken> CustomerTokens { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

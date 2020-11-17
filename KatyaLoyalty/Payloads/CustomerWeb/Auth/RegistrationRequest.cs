@@ -61,11 +61,6 @@ namespace KatyaLoyalty.Payloads.CustomerWeb.Auth
             {
                 response.Errors.Add("phone_number_invalid");
             }
-
-            if (response.Errors.Count > 0)
-            {
-                response.Success = false;
-            }
             return response;
         }
     }

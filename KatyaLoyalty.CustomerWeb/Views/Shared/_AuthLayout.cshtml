@@ -1,0 +1,18 @@
+﻿@{ 
+    Layout = "~/Views/Shared/_BaseLayout.cshtml";
+}
+@RenderBody()
+<div class="footer d-block d-sm-block d-md-none d-lg-none">
+    <div class="display-wrapper display-wrapper-400 ">
+        <div class="card-vertical">
+            <div class="body text-center">
+                <div class="mb-1">
+                    <a href="/" class="btn btn-sm btn-outline-secondary rounded-pill text-bold"><i class="fa fa-arrow-left"></i> Go to home page</a>
+                </div>
+                <div>
+                    <a href="/about" class="text-14px text-secondary text-decoration-none">&#169; @DateTime.Now.Year Katya. All rights reserved</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

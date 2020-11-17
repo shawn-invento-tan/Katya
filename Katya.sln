@@ -9,9 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KatyaLoyalty", "KatyaLoyalt
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KatyaSandbox", "KatyaSandbox\KatyaSandbox.csproj", "{8FD5BF12-EE10-4A7B-8220-383AC398FC2E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KatyaLoyalty.CustomerWeb", "KatyaLoyalty.CustomerWeb\KatyaLoyalty.CustomerWeb.csproj", "{634C3029-667D-406F-9B32-C410CDB345A6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KatyaLoyalty.CustomerWeb", "KatyaLoyalty.CustomerWeb\KatyaLoyalty.CustomerWeb.csproj", "{634C3029-667D-406F-9B32-C410CDB345A6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KatyaLoyalty.AdminWeb", "KatyaLoyalty.AdminWeb\KatyaLoyalty.AdminWeb.csproj", "{08E8B9F1-105A-4D6B-8503-9AE79556F3C8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KatyaLoyalty.AdminWeb", "KatyaLoyalty.AdminWeb\KatyaLoyalty.AdminWeb.csproj", "{08E8B9F1-105A-4D6B-8503-9AE79556F3C8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

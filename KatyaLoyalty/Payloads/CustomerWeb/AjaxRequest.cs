@@ -6,5 +6,6 @@ namespace KatyaLoyalty.Payloads.CustomerWeb
 {
     public class AjaxRequest
     {
+        
     }
 }

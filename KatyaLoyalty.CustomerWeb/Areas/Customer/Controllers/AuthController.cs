@@ -13,9 +13,10 @@ namespace KatyaLoyalty.CustomerWeb.Areas.Customer.Controllers
     {
         public IActionResult Login()
         {
-            return View();
+            LoginModel loginModel = new LoginModel();
+            return View(loginModel);
         }
-
+        
         public IActionResult Register()
         {
             RegisterModel registerModel = new RegisterModel();
@@ -24,12 +25,14 @@ namespace KatyaLoyalty.CustomerWeb.Areas.Customer.Controllers
 
         public IActionResult RecoverPassword()
         {
-            return View();
+            RecoverPasswordModel recoverPasswordModel = new RecoverPasswordModel();
+            return View(recoverPasswordModel);
         }
 
-        public IActionResult ResetPassword()
+        public IActionResult ResetPassword(string identifier, string token)
         {
-            return View();
+            ResetPasswordModel resetPasswordModel = new ResetPasswordModel(identifier, token);
+            return View(resetPasswordModel);
         }
 
         [HttpPost]

@@ -30,6 +30,6 @@ namespace KatyaLoyalty.Db.MsSql
         public DateTime? BirthDate { get; set; }
 
         [Column("gender")]
-        public bool Gender { get; set; }
+        public bool? Gender { get; set; }
     }
 }

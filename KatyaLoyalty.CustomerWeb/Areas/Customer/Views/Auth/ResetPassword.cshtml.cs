@@ -7,10 +7,15 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace KatyaLoyalty.CustomerWeb.Areas.Customer.Views.Auth
 {
-    public class ResetPasswordModel : PageModel
+    public class ResetPasswordModel
     {
-        public void OnGet()
+        public string Identifier { get; set; }
+        public string Token { get; set; }
+        
+        public ResetPasswordModel(string identifier, string token)
         {
+            Identifier = identifier;
+            Token = token;
         }
     }
 }

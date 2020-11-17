@@ -37,6 +37,9 @@ namespace KatyaLoyalty.CustomerWeb
             {
                 app.UseExceptionHandler("/Home/Error");
             }
+
+            app.UseDeveloperExceptionPage();
+
             app.UseStaticFiles();
 
             app.UseRouting();
@@ -48,7 +51,7 @@ namespace KatyaLoyalty.CustomerWeb
                 endpoints.MapAreaControllerRoute(
                     name: "area.customer",
                     areaName: "customer",
-                    pattern: "customer/{controller=Home}/{action=Index}/{id?}"
+                    pattern: "customer/{controller=Home}/{action=Index}"
                 );
                 endpoints.MapControllerRoute(
                     name: "default",

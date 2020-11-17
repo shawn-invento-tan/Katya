@@ -1,33 +1,87 @@
 ﻿@model KatyaLoyalty.CustomerWeb.Areas.Customer.Views.Auth.RegisterModel
 @{
-    Layout = "~/Views/Shared/_BaseLayout.cshtml";
+    Layout = "~/Views/Shared/_AuthLayout.cshtml";
 }
 <script>
     $(document).ready(function () {
-        populatePhoneCodeSelectorModal("#countryCodeModal", "#phoneCountryCode");
+        initCountryCodeModal("#countryCodeModal", "#phoneCountryCode", "#countryCodeModalToggle", "+60");
+        initRegistrationForm();
     })
-    function populatePhoneCodeSelectorModal(modalSelector, outputSelector) {
+    function initCountryCodeModal(modalSelector, outputSelector, buttonSelector, defaultOutput) {
         var modal = $(modalSelector);
         var modalMenu = $(modal).find(".modal-body");
         var output = $(outputSelector);
+        var modalSearch = $(modal).find(".modal-menu-search");
+        $(output).val(defaultOutput)
+        $(buttonSelector).find(".dropdown-toggle-label").text(defaultOutput);
         $.get("/assets/json/country-codes-with-flags.json", function (data) {
             for (i = 0; i < data.length; i++) {
                 var country = data[i];
-                var phoneCodeSelectorLink = document.createElement("a");
-                var countryNameSpan = document.createElement("span");
+                var modalMenuItem = document.createElement("a");
+                var modalMenuItemLabel = document.createElement("span");
                 var phoneCodeSpan = document.createElement("span");
-                phoneCodeSelectorLink.className = "modal-menu-item";
-                phoneCodeSelectorLink.setAttribute("data-countrycode", country.countryCode);
-                countryNameSpan.innerHTML = country.name;
+                modalMenuItem.className = "modal-menu-item";
+                modalMenuItem.setAttribute("data-countrycode", country.countryCode);
+                modalMenuItem.setAttribute("href", "#");
+                modalMenuItemLabel.innerHTML = country.name;
+                modalMenuItemLabel.className = "model-menu-item-label pr-3";
                 phoneCodeSpan.innerHTML = country.countryCode;
-                phoneCodeSelectorLink.appendChild(countryNameSpan);
-                phoneCodeSelectorLink.appendChild(phoneCodeSpan);
-                $(modalMenu).append(phoneCodeSelectorLink);
+                modalMenuItem.appendChild(modalMenuItemLabel);
+                modalMenuItem.appendChild(phoneCodeSpan);
+                $(modalMenu).append(modalMenuItem);
             }
             $(modal).find(".modal-menu-item").on("click", function () {
-                $(output).val($(this).attr("data-countrycode"))
+                var selectedValue = $(this).attr("data-countrycode")
+                $(output).val(selectedValue)
+                $(buttonSelector).find(".dropdown-toggle-label").text(selectedValue);
                 $(modal).modal("toggle");
             })
+        })
+        $(modalSearch).on("keyup", function () {
+            var value = $(this).val().toLowerCase();
+            if (value.length > 0) {
+                $(modalMenu).find(".modal-menu-item").filter(function () {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
+                });
+            }
+            else {
+                $(modalMenu).find(".modal-menu-item").show();
+            }
+        })
+    }
+    function initRegistrationForm() {
+        $("#registrationForm").on("submit", function () {
+            var action = $(this).attr("action");
+            var firstName = $("#firstName").val();
+            var email = $("#email").val();
+            var phoneCountryCode = $("#phoneCountryCode").val();
+            var phoneNumber = $("#phoneNumber").val();
+            var password = $("#password").val();
+            var passwordHashBytes = null;
+            var passwordHash = null;
+
+            if (password.length > 0) {
+                passwordHashBytes = sjcl.hash.sha256.hash(password);
+                passwordHash = sjcl.codec.hex.fromBits(passwordHashBytes);
+            }
+
+            var submission = {
+                "firstName": firstName,
+                "email": email,
+                "phoneCountryCode": phoneCountryCode,
+                "phoneNumber": phoneNumber,
+                "password": passwordHash
+            };
+
+            $.post(action, submission, function (data) {
+                if (data.success) {
+                    window.location.href = "/customer/home";
+                }
+                else {
+
+                }
+            })
+            return false;
         })
     }
 </script>
@@ -35,66 +89,70 @@
     <div class="display-wrapper display-wrapper-400 ">
         <div class="card-vertical border-x-0 border-y-0 border-x-sm-1 border-y-sm-1 mb-3">
             <div class="body">
-                <div class="pad-3">
-                    <div class="mb-4">
-                        <h1 class="text-center mb-0">Take Control</h1>
-                    </div>
-                    <form method="post" action="/customer/auth/ajax?action=register">
-                        <div class="form-group">
-                            <input id="fullName" name="fullName" type="text" class="form-control" placeholder="Full Name" />
-                        </div>
-                        <div class="form-group">
-                            <input id="email" name="email" type="text" class="form-control" placeholder="Email" />
-                        </div>
-                        <div class="form-group">
-                            <input id="phoneCountryCode" type="hidden" />
-                            <div class="input-group phone-input-group">
-                                <div class="input-group-prepend w-30">
-                                    <button type="button" class="btn dropdown-toggle country-code-modal-toggle" data-toggle="modal" data-target="#countryCodeModal">
-                                        <span class="country-code-text">+60</span>
-                                    </button>
-                                </div>
-                                <input id="phoneNumber" name="phoneNumber" type="text" class="form-control w-70" placeholder="Phone Number" />
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <input type="password" class="form-control" placeholder="Password" />
-                        </div>
-                        <div class="form-group">
-                            <button class="btn btn-block btn-outline-dark rounded-pill text-bold">REGISTER</button>
-                        </div>
-                        <div class="text-center text-14px">
-                            By registering, you agree to our
-                            <a href="/about/tnc" class="text-decoration-none text-bold text-secondary">Terms and Conditions</a>,
-                            <a href="/about/privacy" class="text-decoration-none text-bold text-secondary">Privacy Policy</a> and
-                            <a href="/about/cookies" class="text-decoration-none text-bold text-secondary">Cookie Policy</a>
-                        </div>
-                    </form>
+                <div class="mb-4">
+                    <h1 class="text-center mb-0">Katya</h1>
                 </div>
+                <form id="registrationForm" method="post" action="/customer/auth/ajax?authAction=register">
+                    <div class="form-group">
+                        <input id="firstName" type="text" class="form-control" placeholder="Full Name" />
+                    </div>
+                    <div class="form-group">
+                        <input id="email" type="text" class="form-control" placeholder="Email" />
+                    </div>
+                    <div class="form-group">
+                        <div class="input-group phone-input-group">
+                            <div class="input-group-prepend w-40">
+                                <button id="countryCodeModalToggle" type="button" class="btn dropdown-toggle dropdown-toggle-flex" data-toggle="modal" data-target="#countryCodeModal">
+                                    <span class="dropdown-toggle-label"></span>
+                                </button>
+                            </div>
+                            <input id="phoneCountryCode" type="hidden" />
+                            <input id="phoneNumber" type="text" class="form-control w-60" placeholder="Phone Number" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" id="password" class="form-control" placeholder="Password" />
+                    </div>
+                    <div class="form-group">
+                        <button class="btn btn-block btn-outline-dark rounded-pill text-bold">REGISTER</button>
+                    </div>
+                    <div class="text-center text-14px">
+                        By registering, you agree to our
+                        <a href="/about/tnc" class="text-decoration-none text-bold text-secondary">Terms and Conditions</a>,
+                        <a href="/about/privacy" class="text-decoration-none text-bold text-secondary">Privacy Policy</a> and
+                        <a href="/about/cookies" class="text-decoration-none text-bold text-secondary">Cookie Policy</a>
+                    </div>
+                </form>
             </div>
         </div>
         <div class="card-vertical border-x-0 border-y-0 border-x-sm-1 border-y-sm-1 mb-3">
             <div class="body">
-                <div class="pad-x-3">
-                    <div class="text-center text-secondary">
-                        I have an account. <a href="/customer/auth/login" class="text-decoration-none text-bold">Log in</a>
-                    </div>
+                <div class="text-center text-secondary text-15px">
+                    I have an account. <a href="/customer/auth/login" class="text-decoration-none text-bold">Log in</a>
                 </div>
+            </div>
+        </div>
+        <div class="card-vertical d-none d-sm-none d-md-block d-lg-block">
+            <div class="body text-center">
+                <a href="/" class="btn btn-sm btn-outline-secondary rounded-pill"><i class="fa fa-arrow-left"></i> Go to home page</a>
             </div>
         </div>
     </div>
 </div>
-<div class="modal fade phone-code-selector-modal" id="countryCodeModal" tabindex="-1" aria-labelledby="countryCodeModal" aria-hidden="true">
+<div class="modal fade" id="countryCodeModal" tabindex="-1" aria-labelledby="countryCodeModal" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-        <div class="modal-content">
+        <div class="modal-content h-100">
             <div class="modal-header border-b-0 align-items-center pad-x-5">
                 <h5 class="text-bold mb-0">Select Country</h5>
                 <a href="#" class="text-secondary text-decoration-none text-22px" data-dismiss="modal">
                     <i class="fa fa-times"></i>
                 </a>
             </div>
-            <div class="pad-x-4 pad-b-5 border-b-1">
-                <input class="form-control rounded-pill" placeholder="Country Name" />
+            <div class="pad-x-4 pad-b-5 border-b-1 d-flex align-items-center">
+                <input class="form-control rounded-pill modal-menu-search" placeholder="Country Name" />
+                <a href="#" class="text-decoration-none text-secondary" style="margin-left:-1.5rem">
+                    <i class="fa fa-times"></i>
+                </a>
             </div>
             <div class="modal-body pad-0"></div>
         </div>

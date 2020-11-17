@@ -15,4 +15,8 @@
     <ProjectReference Include="..\Katya\Katya.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Services\Shared\" />
+  </ItemGroup>
+
 </Project>

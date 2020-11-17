@@ -1,4 +1,6 @@
-﻿using Katya.Security;
+﻿using Katya.Extensions;
+using Katya.Security;
+using KatyaLoyalty.Db.Constants;
 using KatyaLoyalty.Db.MsSql;
 using KatyaLoyalty.Payloads.CustomerWeb.Auth;
 using System;
@@ -22,13 +24,11 @@ namespace KatyaLoyalty.Services.CustomerWeb
                     if (context.Customers.Any(x => x.Email.ToLower() == registrationRequest.Email.ToLower()))
                     {
                         registrationResponse.Errors.Add("email_exists");
-                        registrationResponse.Success = false;
                         return registrationResponse;
                     }
                     else if (context.Customers.Any(x=>x.PhoneCountryCode == registrationRequest.PhoneCountryCode && x.PhoneNumber == registrationRequest.PhoneNumber))
                     {
                         registrationResponse.Errors.Add("phone_number_exists");
-                        registrationResponse.Success = false;
                         return registrationResponse;
                     }
                     Customer customer = new Customer()
@@ -50,6 +50,10 @@ namespace KatyaLoyalty.Services.CustomerWeb
                     };
                     context.CustomerProfiles.Add(customerProfile);
                     context.SaveChanges();
+
+                    CustomerToken emailVerificationToken = CreateCustomerToken(TokenType.EmailVerification, customer, out string emailVerificationKey);
+                    context.CustomerTokens.Add(emailVerificationToken);
+                    context.SaveChanges();
                 }
                 catch (Exception ex)
                 {
@@ -63,6 +67,28 @@ namespace KatyaLoyalty.Services.CustomerWeb
         {
             LoginResponse loginResponse = new LoginResponse();
             return loginResponse;
+        }
+
+        private CustomerToken CreateCustomerToken(TokenType tokenType, Customer customer, out string publicKey)
+        {
+            string identifier = $"{tokenType}-{customer}-{Guid.NewGuid()}".ToSHA256();
+            GenerateTokenValues(out publicKey, out string privateKey, out string checkSum);
+            CustomerToken customerToken = new CustomerToken()
+            {
+                CustomerId = customer.Id,
+                TokenTypeId = tokenType.ToInt16(),
+                Identifier = identifier,
+                PrivateKey = privateKey,
+                CheckSum = checkSum
+            };
+            return customerToken;
+        }
+
+        private void GenerateTokenValues(out string publicKey, out string privateKey, out string checkSum)
+        {
+            publicKey = $"{DateTime.Now.Ticks}-{Guid.NewGuid()}".ToSHA256();
+            privateKey = $"{DateTime.Now.Ticks}-{Guid.NewGuid()}".ToSHA512();
+            checkSum = $"{publicKey}{privateKey}".ToSHA512();
         }
     }
 }

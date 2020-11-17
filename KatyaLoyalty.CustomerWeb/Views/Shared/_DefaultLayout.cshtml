@@ -2,7 +2,22 @@
     Layout = "~/Views/Shared/_BaseLayout.cshtml";
 }
 <div class="header">
-
+    <div class="display-wrapper header-menu">
+        <div class="logo">
+            <h1 class="text-22px mb-0">KTY</h1>
+        </div>
+        <div class="button-panel">
+            <a href="#" class="button-panel-item link-black text-22px">
+                <i class="fa fa-search"></i>
+            </a>
+            <a href="#" class="button-panel-item link-black text-22px">
+                <i class="fa fa-question"></i>
+            </a>
+            <a href="#" class="button-panel-item link-black text-22px">
+                <i class="fa fa-bars"></i>
+            </a>
+        </div>
+    </div>
 </div>
 <div class="content">
     @RenderBody()

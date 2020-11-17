@@ -295,6 +295,12 @@
 .text-22px {
     font-size: 22px !important;
 }
+.text-23px {
+    font-size: 23px !important;
+}
+.text-24px {
+    font-size: 24px !important;
+}
 .text-bold {
     font-weight: bold !important;
 }
@@ -303,6 +309,15 @@
 }
 .overflow-hidden {
     overflow:hidden;
+}
+
+/* text-colors */
+.link-black {
+    color:rgba(0,0,0,1);
+}
+.link-black:hover, .link-black:focus {
+    color:rgba(0,0,0,0.5);
+    text-decoration:none;
 }
 
 /* padding modifiers */
@@ -393,4 +408,7 @@
 }
 .w-70 {
     width:70% !important;
+}
+.w-px-30 {
+    width:30px !important;
 }

@@ -4,7 +4,9 @@ using System.Text;
 
 namespace KatyaLoyalty.Payloads.CustomerWeb.Auth
 {
-    public class LoginResponse
+    public class LoginResponse : AjaxResponse
     {
+        public LoginResponse() : base() { }
+        public LoginResponse(Exception ex) : base(ex) { }
     }
 }
