@@ -264,6 +264,17 @@
     }
 }
 
+/* border-radius-utilities */
+.border-radius-0 {
+    border-radius:0px;
+}
+.border-radius-1 {
+    border-radius:5px;
+}
+.border-radius-2 {
+    border-radius:10px;
+}
+
 /* text modifiers */
 .text-decoration-none:hover {
     text-decoration:none;
@@ -300,6 +311,9 @@
 }
 .text-24px {
     font-size: 24px !important;
+}
+.text-130pc {
+    font-size:130% !important;
 }
 .text-bold {
     font-weight: bold !important;
@@ -411,4 +425,23 @@
 }
 .w-px-30 {
     width:30px !important;
+}
+
+
+/* thumbnail */
+.thumbnail-clearfix-left {
+    margin-left: 0.75rem;
+}
+.thumbnail-clearfix-right {
+    margin-right: 0.75rem;
+}
+.thumbnail-1 {
+    height:50px;
+    width:50px;
+    margin-right:0.75rem;
+    background-color:rgba(0,0,0,0.3);
+}
+.thumbnail-2 {
+    height:60px;
+    width:60px;
 }
