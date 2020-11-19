@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace KatyaLoyalty.CustomerWeb.Areas.Customer.Controllers
 {
+    [Area("Customer")]
     public class AuthController : Controller
     {
         public IActionResult Login()

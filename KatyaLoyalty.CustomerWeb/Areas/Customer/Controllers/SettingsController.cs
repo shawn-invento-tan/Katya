@@ -6,9 +6,15 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace KatyaLoyalty.CustomerWeb.Areas.Customer.Controllers
 {
+    [Area("Customer")]
     public class SettingsController : Controller
     {
         public IActionResult Index()
+        {
+            return View();
+        }
+
+        public IActionResult EditProfile()
         {
             return View();
         }

@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace KatyaLoyalty.CustomerWeb.Areas.Customer.Controllers
 {
+    [Area("Customer")]
     public class HomeController : Controller
     {
         [Route("/customer/home")]
