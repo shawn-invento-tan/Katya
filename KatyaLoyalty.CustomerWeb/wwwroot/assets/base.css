@@ -1,5 +1,5 @@
 ﻿body {
-    font-family: "Raleway";
+    font-family: "Ubuntu";
     font-feature-settings:"lnum";
 }
 .header {
@@ -8,6 +8,8 @@
     left: 0;
     right: 0;
     border-bottom: 1px solid #dee2e6;
+    z-index:100;
+    background-color:white;
 }
 .header-menu {
     display:flex;
@@ -71,6 +73,8 @@
 /* cards */
 .card-horizontal {
     display:flex;
+    padding-top:0.75rem;
+    padding-bottom:0.75rem;
 }
 .card-horizontal .body {
     flex-grow:1;
@@ -80,6 +84,10 @@
 }
 .card-vertical .body {
     padding:1.25rem;
+}
+.card-vertical .body-no-pad {
+    padding-top:1rem;
+    padding-bottom:1rem;
 }
 
 /* special buttons */
