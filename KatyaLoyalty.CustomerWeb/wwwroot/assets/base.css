@@ -152,12 +152,15 @@
     z-index:101;
     height:100vh;
     background-color:rgba(0,0,0,0.7);
+    display:none;
+}
+.overlay.show {
+    display:block;
 }
 .task-panel-bottom {
-    position:fixed;
+    position:absolute;
     bottom:0;
     left:0;
     right:0;
     background-color:white;
-    z-index:102;
 }
