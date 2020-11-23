@@ -1,5 +1,5 @@
 ﻿body {
-    font-family: "Ubuntu";
+    font-family: "Source Sans Pro";
     font-feature-settings:"lnum";
 }
 .header {
@@ -8,8 +8,8 @@
     left: 0;
     right: 0;
     border-bottom: 1px solid #dee2e6;
-    z-index:100;
-    background-color:white;
+    z-index: 100;
+    background-color: white;
 }
 .header-menu {
     display:flex;
@@ -53,7 +53,8 @@
 /* display-wrapper */
 .display-wrapper {
     width:100%;
-    margin:auto;
+    margin-left:auto;
+    margin-right:auto;
     max-width:1300px;
 }
 .display-wrapper-400 {
@@ -73,8 +74,8 @@
 /* cards */
 .card-horizontal {
     display:flex;
-    padding-top:0.75rem;
-    padding-bottom:0.75rem;
+    padding:0.75rem;
+    
 }
 .card-horizontal .body {
     flex-grow:1;
@@ -140,4 +141,23 @@
     text-decoration:none;
     background-color:rgba(0,0,0,0.1);
     border-radius:5px;
+}
+
+/* reward-list */
+.overlay {
+    position:fixed;
+    top:0;
+    left:0;
+    right:0;
+    z-index:101;
+    height:100vh;
+    background-color:rgba(0,0,0,0.7);
+}
+.task-panel-bottom {
+    position:fixed;
+    bottom:0;
+    left:0;
+    right:0;
+    background-color:white;
+    z-index:102;
 }
