@@ -5,6 +5,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Services\Shared\**" />
+    <EmbeddedResource Remove="Services\Shared\**" />
+    <None Remove="Services\Shared\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="5.0.0" />
@@ -17,7 +23,6 @@
 
   <ItemGroup>
     <Folder Include="Payloads\AdminWeb\CompanyManagement\" />
-    <Folder Include="Services\Shared\" />
   </ItemGroup>
 
 </Project>
