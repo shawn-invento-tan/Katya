@@ -16,6 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Payloads\AdminWeb\CompanyManagement\" />
     <Folder Include="Services\Shared\" />
   </ItemGroup>
 

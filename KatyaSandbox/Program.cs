@@ -1,6 +1,9 @@
 ﻿using Katya.Extensions;
+using KatyaLoyalty.Db.Constants;
 using KatyaLoyalty.Db.MsSql;
+using KatyaLoyalty.Payloads.AdminWeb.RewardManagement;
 using KatyaLoyalty.Payloads.CustomerWeb.Auth;
+using KatyaLoyalty.Services.AdminWeb;
 using KatyaLoyalty.Services.CustomerWeb;
 using Newtonsoft.Json;
 using PhoneNumbers;
@@ -12,27 +15,18 @@ namespace KatyaSandbox
     {
         static void Main(string[] args)
         {
-            PhoneNumberUtil phoneNumberUtil = PhoneNumberUtil.GetInstance();
-            PhoneNumber phoneNumber = phoneNumberUtil.Parse("+1-2681234567", null);
-            Console.WriteLine(phoneNumber.CountryCode);
-            Console.WriteLine(phoneNumberUtil.GetRegionCodeForNumber(phoneNumber));
-
-            foreach(string supportedRegion in phoneNumberUtil.GetSupportedRegions())
+            RewardManagementService rewardManagementService = new RewardManagementService();
+            RewardEditRequest rewardEditRequest = new RewardEditRequest()
             {
-                int countryCode = phoneNumberUtil.GetCountryCodeForRegion(supportedRegion);
-                
-                
-                try
-                {
-                    Locale locale = new Locale("EN", supportedRegion);
-                    Console.WriteLine($"{locale.GetDisplayCountry("en")}  {countryCode}");
+                CompanyId = 1,
+                Name = "Test Reward 1",
+                Description = "Test Reward 1",
+                RewardStatusId = RewardStatus.Active.ToInt32(),
+                EffectiveDate = DateTime.Now,
+                ExpiryDate = DateTime.Now.AddDays(30),
+            };
 
-                }
-                catch(Exception ex)
-                {
-                    Console.WriteLine(ex);
-                }
-            }
+            rewardManagementService.AddReward(rewardEditRequest);
         }
     }
 }

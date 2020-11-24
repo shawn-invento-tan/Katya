@@ -1,6 +1,49 @@
 USE [katya_loyalty]
 GO
-/****** Object:  Table [dbo].[customer]    Script Date: 11/17/2020 9:27:36 AM ******/
+/****** Object:  Index [UX_customer_token_identifier]    Script Date: 11/24/2020 9:06:14 AM ******/
+DROP INDEX [UX_customer_token_identifier] ON [dbo].[customer_token]
+GO
+/****** Object:  Index [UX_customer_token_customer_id_token_type_id]    Script Date: 11/24/2020 9:06:14 AM ******/
+DROP INDEX [UX_customer_token_customer_id_token_type_id] ON [dbo].[customer_token]
+GO
+/****** Object:  Index [UX_customer_phone_country_code_phone_number]    Script Date: 11/24/2020 9:06:14 AM ******/
+DROP INDEX [UX_customer_phone_country_code_phone_number] ON [dbo].[customer]
+GO
+/****** Object:  Index [UX_customer_email]    Script Date: 11/24/2020 9:06:14 AM ******/
+DROP INDEX [UX_customer_email] ON [dbo].[customer]
+GO
+/****** Object:  Table [dbo].[reward]    Script Date: 11/24/2020 9:06:14 AM ******/
+DROP TABLE [dbo].[reward]
+GO
+/****** Object:  Table [dbo].[customer_token]    Script Date: 11/24/2020 9:06:14 AM ******/
+DROP TABLE [dbo].[customer_token]
+GO
+/****** Object:  Table [dbo].[customer_profile]    Script Date: 11/24/2020 9:06:14 AM ******/
+DROP TABLE [dbo].[customer_profile]
+GO
+/****** Object:  Table [dbo].[customer]    Script Date: 11/24/2020 9:06:14 AM ******/
+DROP TABLE [dbo].[customer]
+GO
+/****** Object:  Table [dbo].[company]    Script Date: 11/24/2020 9:06:14 AM ******/
+DROP TABLE [dbo].[company]
+GO
+/****** Object:  Table [dbo].[company]    Script Date: 11/24/2020 9:06:14 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[company](
+	[id] [bigint] IDENTITY(1,1) NOT NULL,
+	[name] [varchar](255) NOT NULL,
+	[created_date] [datetime] NOT NULL,
+	[login_code] [varchar](50) NOT NULL,
+ CONSTRAINT [PK_company] PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[customer]    Script Date: 11/24/2020 9:06:14 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -19,7 +62,7 @@ CREATE TABLE [dbo].[customer](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[customer_profile]    Script Date: 11/17/2020 9:27:36 AM ******/
+/****** Object:  Table [dbo].[customer_profile]    Script Date: 11/24/2020 9:06:14 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -37,7 +80,7 @@ CREATE TABLE [dbo].[customer_profile](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[customer_token]    Script Date: 11/17/2020 9:27:36 AM ******/
+/****** Object:  Table [dbo].[customer_token]    Script Date: 11/24/2020 9:06:14 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -56,9 +99,29 @@ CREATE TABLE [dbo].[customer_token](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
+/****** Object:  Table [dbo].[reward]    Script Date: 11/24/2020 9:06:14 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[reward](
+	[id] [bigint] IDENTITY(1,1) NOT NULL,
+	[company_id] [bigint] NOT NULL,
+	[name] [varchar](255) NOT NULL,
+	[description] [varchar](255) NOT NULL,
+	[created_date] [datetime] NOT NULL,
+	[reward_status_id] [int] NOT NULL,
+	[effective_date] [datetime] NULL,
+	[expiry_date] [datetime] NULL,
+ CONSTRAINT [PK_reward] PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
 SET ANSI_PADDING ON
 GO
-/****** Object:  Index [UX_customer_email]    Script Date: 11/17/2020 9:27:36 AM ******/
+/****** Object:  Index [UX_customer_email]    Script Date: 11/24/2020 9:06:14 AM ******/
 CREATE UNIQUE NONCLUSTERED INDEX [UX_customer_email] ON [dbo].[customer]
 (
 	[email] ASC
@@ -66,14 +129,14 @@ CREATE UNIQUE NONCLUSTERED INDEX [UX_customer_email] ON [dbo].[customer]
 GO
 SET ANSI_PADDING ON
 GO
-/****** Object:  Index [UX_customer_phone_country_code_phone_number]    Script Date: 11/17/2020 9:27:36 AM ******/
+/****** Object:  Index [UX_customer_phone_country_code_phone_number]    Script Date: 11/24/2020 9:06:14 AM ******/
 CREATE UNIQUE NONCLUSTERED INDEX [UX_customer_phone_country_code_phone_number] ON [dbo].[customer]
 (
 	[phone_country_code] ASC,
 	[phone_number] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 GO
-/****** Object:  Index [UX_customer_token_customer_id_token_type_id]    Script Date: 11/17/2020 9:27:36 AM ******/
+/****** Object:  Index [UX_customer_token_customer_id_token_type_id]    Script Date: 11/24/2020 9:06:14 AM ******/
 CREATE UNIQUE NONCLUSTERED INDEX [UX_customer_token_customer_id_token_type_id] ON [dbo].[customer_token]
 (
 	[customer_id] ASC,
@@ -82,7 +145,7 @@ CREATE UNIQUE NONCLUSTERED INDEX [UX_customer_token_customer_id_token_type_id] O
 GO
 SET ANSI_PADDING ON
 GO
-/****** Object:  Index [UX_customer_token_identifier]    Script Date: 11/17/2020 9:27:36 AM ******/
+/****** Object:  Index [UX_customer_token_identifier]    Script Date: 11/24/2020 9:06:14 AM ******/
 CREATE UNIQUE NONCLUSTERED INDEX [UX_customer_token_identifier] ON [dbo].[customer_token]
 (
 	[identifier] ASC

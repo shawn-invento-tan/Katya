@@ -1374,6 +1374,138 @@
 }
 
 
+@media (min-width: 576px) {
+    .w-px-sm-30 {
+        width: 30px !important;
+        min-width: 30px !important;
+    }
+
+    .w-px-sm-50 {
+        width: 50px !important;
+        min-width: 50px !important;
+    }
+
+    .w-px-sm-60 {
+        width: 60px !important;
+        min-width: 60px !important;
+    }
+
+    .w-px-sm-65 {
+        width: 65px !important;
+        min-width: 65px !important;
+    }
+
+    .w-px-sm-70 {
+        width: 70px !important;
+        min-width: 70px !important;
+    }
+
+    .w-px-sm-100 {
+        width: 100px !important;
+        min-width: 100px !important;
+    }
+}
+
+
+@media (min-width: 768px) {
+    .w-px-md-30 {
+        width: 30px !important;
+        min-width: 30px !important;
+    }
+
+    .w-px-md-50 {
+        width: 50px !important;
+        min-width: 50px !important;
+    }
+
+    .w-px-md-60 {
+        width: 60px !important;
+        min-width: 60px !important;
+    }
+
+    .w-px-md-65 {
+        width: 65px !important;
+        min-width: 65px !important;
+    }
+
+    .w-px-md-70 {
+        width: 70px !important;
+        min-width: 70px !important;
+    }
+
+    .w-px-md-100 {
+        width: 100px !important;
+        min-width: 100px !important;
+    }
+}
+
+
+@media (min-width: 992px) {
+    .w-px-lg-30 {
+        width: 30px !important;
+        min-width: 30px !important;
+    }
+
+    .w-px-lg-50 {
+        width: 50px !important;
+        min-width: 50px !important;
+    }
+
+    .w-px-lg-60 {
+        width: 60px !important;
+        min-width: 60px !important;
+    }
+
+    .w-px-lg-65 {
+        width: 65px !important;
+        min-width: 65px !important;
+    }
+
+    .w-px-lg-70 {
+        width: 70px !important;
+        min-width: 70px !important;
+    }
+
+    .w-px-lg-100 {
+        width: 100px !important;
+        min-width: 100px !important;
+    }
+}
+
+
+@media (min-width: 1200px) {
+    .w-px-xl-30 {
+        width: 30px !important;
+        min-width: 30px !important;
+    }
+
+    .w-px-xl-50 {
+        width: 50px !important;
+        min-width: 50px !important;
+    }
+
+    .w-px-xl-60 {
+        width: 60px !important;
+        min-width: 60px !important;
+    }
+
+    .w-px-xl-65 {
+        width: 65px !important;
+        min-width: 65px !important;
+    }
+
+    .w-px-xl-70 {
+        width: 70px !important;
+        min-width: 70px !important;
+    }
+
+    .w-px-xl-100 {
+        width: 100px !important;
+        min-width: 100px !important;
+    }
+}
+
+
 /* thumbnail */
 .thumbnail-square {
     height:0px;
